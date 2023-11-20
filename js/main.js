@@ -22,25 +22,37 @@ myField.addEventListener("click", function(event){
 
     event.target.classList.forEach(classe => {
             if(String(classe).startsWith("position")){
-                position = classe.replace("position", "");
+                position = Number(classe.replace("position", ""));
                 console.log(position);
             }
     });
 
     let x,y;
-    x = position%10;
-    y = 2;
+    x = (position - 1) % 10 + 1;
+    y = (position % 10 != 0 ? (position - x) / 10 : (position - x) / 10) +1;
+
 
     console.log(event.target.classList);
     if(lastClickedBoat){
         if(lastClickedBoat.classList.contains("bsm")){
-            lastClickedBoat.style.gridArea = `5 / ${x} / span 1/ span 2`;
+            lastClickedBoat.style.gridArea = `${y} / ${x} / span 1/ span 2`;
         }else if(lastClickedBoat.classList.contains("bm")){
-            lastClickedBoat.style.gridArea = `5 / ${x} / span 1/ span 3`;
+            lastClickedBoat.style.gridArea = `${y} / ${x} / span 1/ span 3`;
+        }else if(lastClickedBoat.classList.contains("bl")){
+            lastClickedBoat.style.gridArea = `${y} / ${x} / span 1/ span 35`;
+        }else if(lastClickedBoat.classList.contains("bxl")){
+            lastClickedBoat.style.gridArea = `${y} / ${x} / span 1/ span 6`;
+        }else if(lastClickedBoat.classList.contains("bxxl")){
+            lastClickedBoat.style.gridArea = `${y} / ${x} / span 2/ span 7`;
         }
         myField.appendChild(lastClickedBoat);
     }
 });
+
+
+// <div class="boat bl">5x1</div>
+// <div class="boat bxl">6x1</div>
+// <div class="boat bxxl">7x2</div>
 
 
 
@@ -52,7 +64,7 @@ function initPositions(){
         let x = index % 10 + 1;//hier is 10 blokken breed (denk ik)
         let y = position % 10 != 0 ? (position - x) / 10 : (position - x) / 10 ; // hier is 10, 10 blokken hoog. (denk ik)
         y++;
-        // console.log(`position = ${position}, x = ${x}, y = ${y}`);
+        console.log(`position = ${position}, x = ${x}, y = ${y}`);
         element.style.gridArea = `${y} / ${x} / span 1/ span 1`;
     }
 }
