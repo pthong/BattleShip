@@ -13,14 +13,63 @@ header{
     color:white;
 }
 
+
 .opponent-field, .my-field {
     display:grid;
     grid-template-columns: repeat(10, 25px);
     grid-template-rows: repeat(10, 25px);
+    width: calc(10*25px);
     margin: 50px auto;
+
 }
 
 .place{
     background:blue;
     border: 1px dashed lightblue;
+}
+
+.place:hover{
+    background: gray;
+    border: 1px solid black;    
+}
+
+.harbour{
+    background: #eee;
+    border: 1px solid black;
+    width:400px;
+    margin: 0 auto;
+}
+
+.boat{
+    border:2px solid black;
+    background: gray;
+}
+
+.harbour .boat{
+    margin:10px;
+}
+
+.harbour .boat.bsm{
+    width: 50px;
+    height:25px;
+}
+
+.harbour .boat.bm{
+    width: 75px;
+    height:25px;
+}
+
+.harbour .boat.bl{
+    width: 125px;
+    height:25px;
+}
+
+.harbour .boat.bxl{
+    width: 150px;
+    height:25px;
+}
+
+.harbour .boat.bxxl{
+    width: calc(7*25px);
+    height:50px;
 }
