@@ -16,7 +16,32 @@ for (let i = 0; i < boatsInHarbour.length; i++) {
 
 
 myField.addEventListener("click", function(event){
+    // console.log("x: ", event.clientX);
+    // console.log("y: ", event.clientY);
+    let position = -1;
+
+
+    var searchString = 'position';
+
+    event.target.classList.forEach(classe => {
+            if(String(classe).startsWith("position")){
+                console.log(classe);
+                position = classe.replace("position", "");
+                console.log(position);
+            }
+
+    });
+
+
+    console.log(event.target.classList);
+    // console.log(event.target.style.gridArea);
+
     if(lastClickedBoat){
+        if(lastClickedBoat.classList.contains("bsm")){
+            lastClickedBoat.style.gridArea = `5 / 2 / span 1/ span 2`;
+        }else if(lastClickedBoat.classList.contains("bm")){
+            lastClickedBoat.style.gridArea = `5 / 2 / span 1/ span 3`;
+        }
         myField.appendChild(lastClickedBoat);
     }
 });
